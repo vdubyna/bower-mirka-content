@@ -39,25 +39,7 @@
       deferred.resolve(content);
     }
 
-    function getContentManager() {
-      return function (path) {
-        if (angular.isUndefined(storage)) {
-          // Return promise if storage is not filled with content yet
-          return deferred.promise;
-        }
-        if (angular.isUndefined(path)) {
-          // Return Full Content if path not defined
-          return storage;
-        } else {
-          // Return value
-          return [storage || self]
-            .concat(path.split('.'))
-            .reduce(function(prev, curr) {
-              return prev[curr];
-            });
-        }
-      }
-    }
+    this.setContent = setContent;
 
     this.$get = function($q) {
       deferred = $q.defer();
@@ -67,11 +49,25 @@
 
       return {
         setContent: setContent,
-        get: getContentManager
+        get: function (path) {
+          if (angular.isUndefined(storage)) {
+            // Return promise if storage is not filled with content yet
+            return deferred.promise;
+          }
+          if (angular.isUndefined(path)) {
+            // Return Full Content if path not defined
+            return storage;
+          } else {
+            // Return value
+            return [storage || self]
+              .concat(path.split('.'))
+              .reduce(function(prev, curr) {
+                return prev[curr];
+              });
+          }
+        }
       }
     };
-
-    this.setContent = setContent;
   }
 
 })(window, window.angular);

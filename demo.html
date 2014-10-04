@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="mkContentDemo">
+<head>
+    <title>{{ $mkContent.get('app.title') }}</title>
+</head>
+<body>
+    <h1>{{ $mkContent.get('app.message') }}</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
+    <script src="mirka-content.js" defer type="text/javascript"></script>
+    <script type="text/javascript">
+        angular.module("mkContentDemo", ['mirkaContent'])
+            .run(["$mkContent", "$rootScope", function($mkContent, $rootScope){
+                $mkContent.setContent({
+                    app:{
+                        title: "mkContentDemo",
+                        message: "Hello world!"
+                    }
+                });
+
+                $rootScope.$mkContent = $mkContent;
+            }]);
+    </script>
+</body>
+</html>
