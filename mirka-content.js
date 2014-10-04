@@ -1,11 +1,20 @@
 (function (window, angular) {
   'use strict';
 
-
+  /**
+   * Mirka content module
+   */
   angular.module('mirkaContent', ['ng'])
-    .provider('$content', $ContentProvider);
+    .provider('$mkContent', $mkContentProvider);
 
-  function $ContentProvider() {
+  /**
+   * Content provider which allows to get a quick access to content object values
+   * by path
+   * example:
+   * $mkProvider.setContent({info: {description: "Description say Hi!"}});
+   * $mkContent.get('info.description');
+   */
+  function $mkContentProvider() {
     var contentContainer;
 
     this.setContent = function (content) {
