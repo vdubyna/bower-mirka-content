@@ -1,0 +1,23 @@
+{
+  "name": "bower-mirka-content",
+  "main": "mirka-content.js",
+  "version": "0.1.0",
+  "authors": [
+    "Volodymyr Dubyna <vovikha@gmail.com>"
+  ],
+  "description": "Angular module to provide simple access to content object",
+  "keywords": [
+    "mirka",
+    "angular",
+    "module"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vdubyna/mirka",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
