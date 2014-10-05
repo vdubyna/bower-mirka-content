@@ -59,14 +59,13 @@
             return storage;
           } else {
             // Return value
-            return [storage || self]
-              .concat(path.split('.'))
+            return [storage].concat(path.split('.'))
               .reduce(function(prev, curr) {
                 return prev[curr];
               });
           }
         }
-      }
+      };
     };
   }
 

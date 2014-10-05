@@ -1,4 +1,6 @@
+"use strict";
 module.exports = function(grunt) {
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -26,14 +28,20 @@ module.exports = function(grunt) {
           hostname: '*'
         }
       }
+    },
+    jshint: {
+      options: {
+        jshintrc: true
+      },
+      all: ['Gruntfile.js', 'mirka-content.js']
     }
-
   });
 
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
 
-  grunt.registerTask('test', ['connect', 'protractor']);
+  grunt.registerTask('test', ['jshint', 'connect', 'protractor']);
 };
